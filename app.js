@@ -54,6 +54,13 @@ const flowPROMO = addKeyword('test').addAnswer('', {
             body: 'imagen'
         },
         {
+            body: 'test1'
+        }
+        ,
+        {
+            body: 'imagen2'
+        },
+        {
             body: 'test2'
         }
     ]
@@ -62,7 +69,7 @@ const flowPROMO = addKeyword('test').addAnswer('', {
 
 const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
     .addAnswer('Hola! {username} ¿Como puedo ayudarte?')
-    .addAnswer([,'👉 *Quiero una promo!*','👉 *Ver menu burgers*','👉 *Ver menu brunch*',],null,null,[flowDocs]
+    .addAnswer([,'_test_'],null,null,[flowPROMO]
     )
 
 const main = async () => {
