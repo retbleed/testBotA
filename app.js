@@ -68,8 +68,7 @@ const flowPROMO = addKeyword('test').addAnswer('Opciones!', {
 
 
 const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
-    .addAnswer('Hola! {username} ¿Como puedo ayudarte?')
-    .addAnswer([,'_test_'],[flowPROMO]
+    .addAnswer('Hola! {username} ¿Como puedo ayudarte?').addAnswer(['test'],null,null,[flowPROMO]
     )
 
 const main = async () => {
