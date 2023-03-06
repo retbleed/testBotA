@@ -4,7 +4,7 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario'])
+/* const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario'])
 
 const flowDocs = addKeyword(['doc', 'documentacion', 'documentación']).addAnswer(
     [
@@ -46,20 +46,23 @@ const flowDiscord = addKeyword(['discord']).addAnswer(
     null,
     null,
     [flowSecundario]
-)
+) */
+
+const flowPROMO = addKeyword('test').addAnswer('', {
+    buttons:[
+        {
+            body: 'imagen'
+        },
+        {
+            body: 'test2'
+        }
+    ]
+})
+
 
 const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
-    .addAnswer('🙌 Hola bienvenido a este *Chatbot*')
-    .addAnswer(
-        [
-            'te comparto los siguientes links de interes sobre el proyecto',
-            '👉 *doc* para ver la documentación',
-            '👉 *gracias*  para ver la lista de videos',
-            '👉 *discord* unirte al discord',
-        ],
-        null,
-        null,
-        [flowDocs, flowGracias, flowTuto, flowDiscord]
+    .addAnswer('Hola! {username} ¿Como puedo ayudarte?')
+    .addAnswer([,'👉 *Quiero una promo!*','👉 *Ver menu burgers*','👉 *Ver menu brunch*',],null,null,[flowDocs]
     )
 
 const main = async () => {
