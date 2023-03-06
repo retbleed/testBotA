@@ -48,7 +48,7 @@ const flowDiscord = addKeyword(['discord']).addAnswer(
     [flowSecundario]
 ) */
 
-const flowPROMO = addKeyword('test').addAnswer('', {
+const flowPROMO = addKeyword('test').addAnswer('Opciones!', {
     buttons:[
         {
             body: 'imagen'
@@ -69,7 +69,7 @@ const flowPROMO = addKeyword('test').addAnswer('', {
 
 const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
     .addAnswer('Hola! {username} ¿Como puedo ayudarte?')
-    .addAnswer([,'_test_'],null,null,[flowPROMO]
+    .addAnswer([,'_test_'],[flowPROMO]
     )
 
 const main = async () => {
