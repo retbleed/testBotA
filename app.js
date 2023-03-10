@@ -8,16 +8,19 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 let userEmail;
 let userNumber;
 
-const flowPromo = addKeyword(['Quiero una promo 🤩', '⬅️ Volver al Inicio']).
-    addAnswer(['Hola!','Para enviar el formulario necesito unos datos...' ,'Escriba su *Nombre*'],
-    { capture: true, buttons: [{ body: '❌ Cancelar solicitud' }] },
-    async (ctx, { endFlow , fallBack}) => {
-        if (ctx.body == '❌ Cancelar solicitud')
-         return endFlow({body: '❌ Su solicitud ha sido cancelada ❌',    
-             buttons:[{body:'⬅️ Volver al Inicio' }]
-        })
+const flowPromo = addKeyword(['Quiero una promo 🤩']).
+    addAnswer(['Genial','Para recibir tu promocion por favor:' ,'Escriba su *Correo!*'],
+    { capture: true},
+    async (ctx, { fallBack}) => {
         if (!ctx.body.includes('@')) return fallBack()
-        userEmail = ctx.body})
+        userEmail = ctx.body
+        console.log(userEmail)
+    }).addAnswer(['Perfecto!','Escribe porfavor tu numero de telefono!'],
+    { capture: true},
+    async (ctx) => {
+        userNumber = ctx.body
+        console.log(userNumber)
+    })
 
 const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
