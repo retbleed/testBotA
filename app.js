@@ -4,16 +4,11 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-const flowBurgers = 0
-const flowBrunch = 0
-const flowReserva = 0
-const flowUbi = 0
-const flowPromo = 0
 
 let userEmail;
 let userNumber;
 
-flowPromo = addKeyword(['Quiero una promo 🤩']).
+const flowPromo = addKeyword(['Quiero una promo 🤩']).
     addAnswer(['Genial, para recibir tu promocion por favor escriba su *Correo!* 👇'],
     { capture: true},
     async (ctx, { flowDynamic, fallBack}) => {
@@ -29,15 +24,15 @@ flowPromo = addKeyword(['Quiero una promo 🤩']).
         return flowDynamic(`Unos pasos mas! 😎`)
     })
 
-flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null, [flowPromo, flowBrunch, flowReserva, flowUbi])
+const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
-flowBrunch =  addKeyword('Ver menu brunch 🍳').addAnswer('Te paso nuestro menu de Brunch 👇', {media: 'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, null, [flowPromo, flowBurgers, flowReserva, flowUbi])
+const flowBrunch =  addKeyword('Ver menu brunch 🍳').addAnswer('Te paso nuestro menu de Brunch 👇', {media: 'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, null)
 
-flowReserva = addKeyword('Reserva 😎').addAnswer(['Te paso nuestro pagina para que hagas tu reservacion 👇', 'https://www.google.com/'], null, [flowPromo, flowBurgers, flowBrunch, flowUbi])
+const flowReserva = addKeyword('Reserva 😎').addAnswer(['Te paso nuestro pagina para que hagas tu reservacion 👇', 'https://www.google.com/'], null)
 
-flowUbi = addKeyword('Ubicacion 📍').addAnswer(['Te paso nuestra ubicacion 👇', 'https://www.google.com.mx/maps/@51.4237689,-0.0097631,10z'], null, [flowPromo, flowBurgers, flowBrunch, flowReserva])
+const flowUbi = addKeyword('Ubicacion 📍').addAnswer(['Te paso nuestra ubicacion 👇', 'https://www.google.com.mx/maps/@51.4237689,-0.0097631,10z'], null)
 
-flowPrincipal = addKeyword(['Hola', 'ole', 'alo', 'que onda']).addAnswer(['Hola! Bienvenido yo soy todoPoderosoBot!', '¿Que puedo hacer hoy por ti?'], {buttons: [{body: 'Quiero una promo 🤩'},{body: 'Ver menu burgers 🍔'},{body: 'Ver menu brunch 🍳'},{body: 'Reserva 😎'},{body: 'Ubicacion 📍'}]}, null, [flowPromo, flowBurgers, flowBrunch, flowReserva, flowUbi])
+const flowPrincipal = addKeyword(['Hola', 'ole', 'alo', 'que onda']).addAnswer(['Hola! Bienvenido yo soy todoPoderosoBot!', '¿Que puedo hacer hoy por ti?'], {buttons: [{body: 'Quiero una promo 🤩'},{body: 'Ver menu burgers 🍔'},{body: 'Ver menu brunch 🍳'},{body: 'Reserva 😎'},{body: 'Ubicacion 📍'}]}, null, [flowPromo, flowBurgers, flowBrunch, flowReserva, flowUbi])
 
 const main = async () => {
     const adapterDB = new MockAdapter()
