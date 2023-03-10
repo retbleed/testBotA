@@ -15,12 +15,14 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         if (!ctx.body.includes('@')) return fallBack()
         userEmail = ctx.body
         console.log(userEmail)
+        await delay(2000)
         return flowDynamic(`Perfecto!`)
     }).addAnswer('Escribe porfavor tu numero de telefono!',
     { capture: true},
-    async (ctx) => {
+    async (ctx, {flowDynamic}) => {
         userNumber = ctx.body
         console.log(userNumber)
+        await delay(2000)
         return flowDynamic(`Unos pasos mas!`)
     })
 
@@ -32,7 +34,7 @@ const flowReserva = addKeyword('Reserva 😎').addAnswer(['Te paso nuestro pagin
 
 const flowUbi = addKeyword('Ubicacion 📍').addAnswer(['Te paso nuestra ubicacion 👇', 'https://www.google.com.mx/maps/@51.4237689,-0.0097631,10z'], null)
 
-const flowPrincipal = addKeyword(['Hola', 'ole', 'alo', 'que onda']).addAnswer(['Hola! Bienvenido yo soy xBot, escribe *Iniciar* para comenzar!', '¿Que puedo hacer hoy por ti?'], {buttons: [{body: 'Quiero una promo 🤩'},{body: 'Ver menu burgers 🍔'},{body: 'Ver menu brunch 🍳'},{body: 'Reserva 😎'},{body: 'Ubicacion 📍'}]}, null, [flowPromo, flowBurgers, flowBrunch, flowReserva, flowUbi])
+const flowPrincipal = addKeyword(['Hola', 'ole', 'alo', 'que onda']).addAnswer(['Hola! Bienvenido yo soy todoPoderosoBot!', '¿Que puedo hacer hoy por ti?'], {buttons: [{body: 'Quiero una promo 🤩'},{body: 'Ver menu burgers 🍔'},{body: 'Ver menu brunch 🍳'},{body: 'Reserva 😎'},{body: 'Ubicacion 📍'}]}, null, [flowPromo, flowBurgers, flowBrunch, flowReserva, flowUbi])
 
 const main = async () => {
     const adapterDB = new MockAdapter()
