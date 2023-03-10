@@ -4,72 +4,38 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-/* const flowSecundario = addKeyword(['2', 'siguiente']).addAnswer(['📄 Aquí tenemos el flujo secundario'])
-
-const flowDocs = addKeyword(['doc', 'documentacion', 'documentación']).addAnswer(
-    [
-        '📄 Aquí encontras las documentación recuerda que puedes mejorarla',
-        'https://bot-whatsapp.netlify.app/',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-)
-
-const flowTuto = addKeyword(['tutorial', 'tuto']).addAnswer(
-    [
-        '🙌 Aquí encontras un ejemplo rapido',
-        'https://bot-whatsapp.netlify.app/docs/example/',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-)
-
-const flowGracias = addKeyword(['gracias', 'grac']).addAnswer(
-    [
-        '🚀 Puedes aportar tu granito de arena a este proyecto',
-        '[*opencollective*] https://opencollective.com/bot-whatsapp',
-        '[*buymeacoffee*] https://www.buymeacoffee.com/leifermendez',
-        '[*patreon*] https://www.patreon.com/leifermendez',
-        '\n*2* Para siguiente paso.',
-    ],
-    null,
-    null,
-    [flowSecundario]
-)
-
-const flowDiscord = addKeyword(['discord']).addAnswer(
-    ['🤪 Únete al discord', 'https://link.codigoencasa.com/DISCORD', '\n*2* Para siguiente paso.'],
-    null,
-    null,
-    [flowSecundario]
-) */
-
-const flowPROMO = addKeyword('test').addAnswer('Opciones!', {
-    buttons:[
+const flowPrincipal = addKeyword(['hola', 'ole', 'alo', 'Regresar'])
+    .addAnswer('Hola! Bienvenido yo soy xBot, ¿que puedo hacer hoy por ti?',
+    {buttons: [
         {
-            body: 'imagen'
+            body: '🤩 Quiero una promo'
         },
         {
-            body: 'test1'
-        }
-        ,
-        {
-            body: 'imagen2'
+            body: '🍔 Ver menu burgers'
         },
         {
-            body: 'test2'
+            body: '🍳 Ver menu brunch'
+        },
+        {
+            body: '😎 Reserva'
+        },
+        {
+            body: '📍 Ubicacion'
         }
-    ]
-})
+    ]}, null, null, [flowPromo, flowBurgers, flowBrunch, flowReserva, flowUbi])
 
+const flowPromo = addKeyword('🤩 Quiero una promo');
 
-const flowPrincipal = addKeyword(['hola', 'ole', 'alo'])
-    .addAnswer('Hola! {username} ¿Como puedo ayudarte?').addAnswer(['test'],null,null,[flowPROMO]
-    )
+// Falta probar que todo esto funcione completamente, falta agregar la ubiacacion BUSCAR COMO HACERLE!
+
+const flowBurgers = addKeyword('🍔 Ver menu burgers').addAnswer({delay: 1500},'Te paso nuestro menu de Burgers 👇',{delay: 1500}, {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
+
+const flowBrunch =  addKeyword('🍳 Ver menu brunch').addAnswer({delay: 1500},'Te paso nuestro menu de Brunch 👇',{delay: 1500}, {media: 'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
+
+const flowReserva = addKeyword('😎 Reserva').addAnswer({delay: 1500},['Te paso nuestro pagina para que hagas tu reservacion 👇', 'https://www.google.com/'], {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
+
+const flowUbi = addKeyword('📍 Ubicacion').addAnswer({delay: 1500},['Te paso nuestra ubicacion 👇', 'https://www.google.com/'], {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
+
 
 const main = async () => {
     const adapterDB = new MockAdapter()
