@@ -10,19 +10,19 @@ let userNumber;
 
 const flowPromo = addKeyword(['Quiero una promo 🤩']).
     addAnswer(['Genial, para recibir tu promocion por favor escriba su *Correo!* 👇'],
-    { capture: true},
+    {capture: true},
     async (ctx, { flowDynamic, fallBack}) => {
         if (!ctx.body.includes('@')) return fallBack()
         userEmail = ctx.body
         console.log(userEmail)
         return flowDynamic(`Perfecto! 😎`)
     }).addAnswer('Escriba por favor su *numero de telefono*! 👇',
-    { capture: true},
+    {capture: true},
     async (ctx, {flowDynamic}) => {
         userNumber = ctx.body
         console.log(userNumber)
         return flowDynamic(`Unos pasos mas! 😎`)
-    })
+    }).addAnswer('Espera un momento!', null)
 
 const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
