@@ -8,9 +8,9 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 
 // Falta probar que todo esto funcione completamente, falta agregar la ubiacacion BUSCAR COMO HACERLE!
 
-const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null, null, null)
+const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
-const flowBrunch =  addKeyword('Ver menu brunch 🍳').addAnswer({delay: 1500},'Te paso nuestro menu de Brunch 👇',{delay: 1500}, {media: 'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'})
+const flowBrunch =  addKeyword('Ver menu brunch 🍳').addAnswer('Te paso nuestro menu de Brunch 👇', {media: 'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'})
 
 const flowReserva = addKeyword('Reserva 😎').addAnswer({delay: 1500},['Te paso nuestro pagina para que hagas tu reservacion 👇', 'https://www.google.com/'])
 
