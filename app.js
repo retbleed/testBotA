@@ -16,7 +16,7 @@ const flowReserva = addKeyword('😎 Reserva').addAnswer({delay: 1500},['Te paso
 
 const flowUbi = addKeyword('📍 Ubicacion').addAnswer({delay: 1500},['Te paso nuestra ubicacion 👇', 'https://www.google.com.mx/maps/@51.4237689,-0.0097631,10z'])
 
-const flowSecundario = addKeyword('Iniciar').addAnswer('Hola! Bienvenido yo soy xBot').addAnswer('¿Que puedo hacer hoy por ti?', {buttons: [{body: '🤩 Quiero una promo'},{body: '🍔 Ver menu burgers'},{body: '🍳 Ver menu brunch'},{body: '😎 Reserva'},{body: '📍 Ubicacion'}]}, null, null, [flowBurgers, flowBrunch, flowReserva, flowUbi])
+const flowSecundario = addKeyword('Iniciar').addAnswer('¿Que puedo hacer hoy por ti?').addAnswer({buttons: [{body: '🤩 Quiero una promo'},{body: '🍔 Ver menu burgers'},{body: '🍳 Ver menu brunch'},{body: '😎 Reserva'},{body: '📍 Ubicacion'}]}, null, [flowBurgers, flowBrunch, flowReserva, flowUbi])
 
 const flowPrincipal = addKeyword(['Hola', 'ole']).addAnswer('Hola! Bienvenido yo soy xBot, escribe *Iniciar* para comenzar!', null, null,[flowSecundario])
 
