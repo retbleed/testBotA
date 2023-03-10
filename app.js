@@ -16,9 +16,7 @@ const flowReserva = addKeyword('😎 Reserva').addAnswer({delay: 1500},['Te paso
 
 const flowUbi = addKeyword('📍 Ubicacion').addAnswer({delay: 1500},['Te paso nuestra ubicacion 👇', 'https://www.google.com.mx/maps/@51.4237689,-0.0097631,10z']);
 
-
-const flowPrincipal = addKeyword(['hola', 'ole', 'alo']).addAnswer('Hola! Bienvenido yo soy xBot, ¿que puedo hacer hoy por ti?', {buttons: [{body: '🤩 Quiero una promo'},{body: '🍔 Ver menu burgers'},{body: '🍳 Ver menu brunch'},{body: '😎 Reserva'},{body: '📍 Ubicacion'}]}, null, null, null, [flowBurgers, flowBrunch, flowReserva, flowUbi])
-
+const flowPrincipal = addKeyword(['hola', 'ole', 'alo']).addAnswer('Hola! Bienvenido yo soy xBot, ¿que puedo hacer hoy por ti?', {buttons: [{body: '🤩 Quiero una promo'},{body: '🍔 Ver menu burgers'},{body: '🍳 Ver menu brunch'},{body: '😎 Reserva'},{body: '📍 Ubicacion'}]}, null, null, [flowBurgers, flowBrunch, flowReserva, flowUbi])
 
 const main = async () => {
     const adapterDB = new MockAdapter()
