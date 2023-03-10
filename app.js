@@ -4,7 +4,9 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-const flowPrincipal = addKeyword(['hola', 'ole', 'alo', 'Regresar'])
+const flowPrincipal = addKeyword('Hola', null, null, [flowSecundario])
+
+const flowSecundario = addKeyword(['Hola', 'Regresar'])
     .addAnswer('Hola! Bienvenido yo soy xBot, ¿que puedo hacer hoy por ti?',
     {buttons: [
         {
