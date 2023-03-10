@@ -22,9 +22,9 @@ const flowPrincipal = addKeyword(['hola', 'ole', 'alo', 'Regresar'])
         {
             body: '📍 Ubicacion'
         }
-    ]}, null, null, [flowPromo, flowBurgers, flowBrunch, flowReserva, flowUbi])
+    ]}, null, null, [flowBurgers, flowBrunch, flowReserva, flowUbi])
 
-const flowPromo = addKeyword('🤩 Quiero una promo');
+// const flowPromo = addKeyword('🤩 Quiero una promo');
 
 // Falta probar que todo esto funcione completamente, falta agregar la ubiacacion BUSCAR COMO HACERLE!
 
@@ -34,7 +34,7 @@ const flowBrunch =  addKeyword('🍳 Ver menu brunch').addAnswer({delay: 1500},'
 
 const flowReserva = addKeyword('😎 Reserva').addAnswer({delay: 1500},['Te paso nuestro pagina para que hagas tu reservacion 👇', 'https://www.google.com/'], {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
 
-const flowUbi = addKeyword('📍 Ubicacion').addAnswer({delay: 1500},['Te paso nuestra ubicacion 👇', 'https://www.google.com/'], {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
+const flowUbi = addKeyword('📍 Ubicacion').addAnswer({delay: 1500},['Te paso nuestra ubicacion 👇', 'https://www.google.com.mx/maps/@51.4237689,-0.0097631,10z'], {delay: 1500},'Escribe *Regresar* para volver al menu principal! ✌', null, null, [flowPrincipal]);
 
 
 const main = async () => {
