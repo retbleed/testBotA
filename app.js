@@ -18,7 +18,7 @@ const flowUbi = addKeyword('📍 Ubicacion').addAnswer({delay: 1500},['Te paso n
 
 const flowSecundario = addKeyword('Iniciar').addAnswer('Hola! Bienvenido yo soy xBot').addAnswer('¿Que puedo hacer hoy por ti?', {buttons: [{body: '🤩 Quiero una promo'},{body: '🍔 Ver menu burgers'},{body: '🍳 Ver menu brunch'},{body: '😎 Reserva'},{body: '📍 Ubicacion'}]}, null, null, [flowBurgers, flowBrunch, flowReserva, flowUbi])
 
-const flowPrincipal = addKeyword(['Hola', 'ole']).addAnswer('Hola! Bienvenido yo soy xBot, escribe *Iniciar* para comenzar!', null, null,[flowSecundario]);
+const flowPrincipal = addKeyword(['Hola', 'ole']).addAnswer('Hola! Bienvenido yo soy xBot, escribe *Iniciar* para comenzar!', null, null,[flowSecundario]).toJson();
 
 const main = async () => {
     const adapterDB = new MockAdapter()
