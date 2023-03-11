@@ -22,30 +22,27 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         userNumber = ctx.body
         console.log(userNumber)
         return flowDynamic(`Unos pasos mas! 😎`)
-    }).addAnswer('Escriba por favor su *numero de telefono*! 👇',
-    null,
+    }).addAnswer('Elige tu *promo*! 👇',
+    {capture: true},
     async (ctx, {provider}) => {
         const id = ctx.key.remoteJid
-
-
-    const templateButtons = [
-        {index: 1, urlButton: {displayText: ':star: Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
-        {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
-        {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
-    ]
+        const templateButtons = [
+            {index: 1, urlButton: {displayText: ':star: Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
+            {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
+            {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
+        ]
     
-    const templateMessage = {
-        text: "Hi it's a template message",
-        footer: 'Hello World',
-        templateButtons: templateButtons
-    }
+        const templateMessage = {
+            text: "Hi it's a template message",
+            footer: 'Hello World',
+            templateButtons: templateButtons
+        }
     
-    const abc = await provider.getInstance()
-    
-    
-    await abc.sendMessage(id, templateMessage)
-    console.log('->', abc)
-    return 
+        const abc = await provider.getInstance()
+        
+        await abc.sendMessage(id, templateMessage)
+        console.log('->', abc)
+        return 
     })  
 
 
