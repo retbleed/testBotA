@@ -4,7 +4,6 @@ const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
 const MockAdapter = require('@bot-whatsapp/database/mock')
 
-
 let userEmail;
 let userNumber;
 
@@ -25,12 +24,10 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         console.log(userNumber)
         return // flowDynamic(`Unos pasos mas! 😎`)
     }).addAnswer('Elige tu *promo*! 👇', null, null).
-    addAnswer(['Una hamburguesa gratis!', '_Mensaje mensaje mensaje mensaje_'], {media:'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null).addAnswer(null,{buttons: {body: 'Canjear'}}, null, [flowCanjear]).
-    addAnswer(['Un desayuno gratis! ', '_Mensaje mensaje mensaje mensaje_'], {media:'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, null).addAnswer(null,{buttons: {body: 'Canjear'}}, null, [flowCanjear]).
-    addAnswer(['Una hamburguesa gratis!', '_Mensaje mensaje mensaje mensaje_'], {media:'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null).addAnswer(null,{buttons: {body: 'Canjear'}}, null, [flowCanjear]).
-    addAnswer(['Un desayuno gratis! ', '_Mensaje mensaje mensaje mensaje_'], {media:'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, null).addAnswer(null,{buttons: {body: 'Canjear'}}, null, [flowCanjear])
-    
-
+    addAnswer(['Una hamburguesa gratis!', '_Mensaje mensaje mensaje mensaje_'], {media:'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null).addAnswer({buttons: [{body: 'Canjear'}]}, null, [flowCanjear]).
+    addAnswer(['Un desayuno gratis!    ', '_Mensaje mensaje mensaje mensaje_'], {media:'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, null).addAnswer({buttons: [{body: 'Canjear'}]}, null, [flowCanjear]).
+    addAnswer(['Una hamburguesa gratis!', '_Mensaje mensaje mensaje mensaje_'], {media:'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null).addAnswer({buttons: [{body: 'Canjear'}]}, null, [flowCanjear]).
+    addAnswer(['Un desayuno gratis!    ', '_Mensaje mensaje mensaje mensaje_'], {media:'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'}, null).addAnswer({buttons: [{body: 'Canjear'}]}, null, [flowCanjear])
 
     const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
