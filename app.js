@@ -18,34 +18,34 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         return flowDynamic(`Perfecto! 😎`)
     }).addAnswer('Escriba por favor su *numero de telefono*! 👇',
     {capture: true},
-    async (ctx, {flowDynamic}) => {
+    async (ctx /*,  {flowDynamic} */) => {
         userNumber = ctx.body
         console.log(userNumber)
-        return flowDynamic(`Unos pasos mas! 😎`)
-    }).addAnswer('Elige tu *promo*! 👇',
-    {capture: false},
-    async (ctx, {provider}) => {
+        return // flowDynamic(`Unos pasos mas! 😎`)
+    }).addAnswer('Elige tu *promo*! 👇', null, async (ctx, { provider }) => {
         const id = ctx.key.remoteJid
+    
+    
         const templateButtons = [
             {index: 1, urlButton: {displayText: ':star: Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
             {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
             {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
         ]
-    
+        
         const templateMessage = {
-            image: {url: 'https://example.com/image.jpeg'},
-            caption: "Hi it's button message",
+            text: "Hi it's a template message",
             footer: 'Hello World',
-            buttons: templateButtons,
-            headerType: 4
+            templateButtons: templateButtons
         }
-    
+        
+        
         const abc = await provider.getInstance()
+        
         
         await abc.sendMessage(id, templateMessage)
         console.log('->', abc)
         return 
-    })  
+    })
 
 
 const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
