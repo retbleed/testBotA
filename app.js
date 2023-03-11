@@ -22,7 +22,25 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         userNumber = ctx.body
         console.log(userNumber)
         return flowDynamic(`Unos pasos mas! 😎`)
-    }).addAnswer('Espera un momento!', null)
+    }).addAnswer('Escriba por favor su *numero de telefono*! 👇',
+    null,
+    async (ctx, {provider}) => {
+        const id = ctx.key.remoteJid
+    const buttons = [
+        {buttonId: 'id1', buttonText: {displayText: 'HOLA ESTE ES UN BOTON'}, type: 1},
+        {buttonId: 'id2', buttonText: {displayText: 'HOLA ESTE ES OTRO BOTON'}, type: 1}
+      ]
+      const buttonMessage = {
+        text: "*Selecciona el botón del servicio que requiere:*",
+        footer: 'ESTO ES UNA MARCA DE AGUA',
+        buttons: buttons,
+        headerType: 1
+      }
+      const a = await provider.sendRaw()(id, buttonMessage)
+      console.log('->',provider.sendRaw)
+      return a
+    })  
+
 
 const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
