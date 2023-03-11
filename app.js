@@ -26,19 +26,26 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
     null,
     async (ctx, {provider}) => {
         const id = ctx.key.remoteJid
-    const buttons = [
-        {buttonId: 'id1', buttonText: {displayText: 'HOLA ESTE ES UN BOTON'}, type: 1},
-        {buttonId: 'id2', buttonText: {displayText: 'HOLA ESTE ES OTRO BOTON'}, type: 1}
-      ]
-      const buttonMessage = {
-        text: "*Selecciona el botón del servicio que requiere:*",
-        footer: 'ESTO ES UNA MARCA DE AGUA',
-        buttons: buttons,
-        headerType: 1
-      }
-      const a = await provider.sendRaw()(id, buttonMessage)
-      console.log('->',provider.sendRaw)
-      return a
+
+
+    const templateButtons = [
+        {index: 1, urlButton: {displayText: ':star: Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
+        {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
+        {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
+    ]
+    
+    const templateMessage = {
+        text: "Hi it's a template message",
+        footer: 'Hello World',
+        templateButtons: templateButtons
+    }
+    
+    const abc = await provider.getInstance()
+    
+    
+    await abc.sendMessage(id, templateMessage)
+    console.log('->', abc)
+    return 
     })  
 
 
