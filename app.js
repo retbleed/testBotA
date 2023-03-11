@@ -23,7 +23,7 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         console.log(userNumber)
         return flowDynamic(`Unos pasos mas! 😎`)
     }).addAnswer('Elige tu *promo*! 👇',
-    {capture: true},
+    {capture: false},
     async (ctx, {provider}) => {
         const id = ctx.key.remoteJid
         const templateButtons = [
@@ -33,9 +33,11 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         ]
     
         const templateMessage = {
-            text: "Hi it's a template message",
+            image: {url: 'https://example.com/image.jpeg'},
+            caption: "Hi it's button message",
             footer: 'Hello World',
-            templateButtons: templateButtons
+            buttons: templateButtons,
+            headerType: 4
         }
     
         const abc = await provider.getInstance()
