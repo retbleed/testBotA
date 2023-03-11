@@ -8,6 +8,8 @@ const MockAdapter = require('@bot-whatsapp/database/mock')
 let userEmail;
 let userNumber;
 
+const flowCanjear = addKeyword('Canjear').addAnswer('FUNCIONANDO TEST 1', null)
+
 const flowPromo = addKeyword(['Quiero una promo 🤩']).
     addAnswer(['Genial, para recibir tu promocion por favor escriba su *Correo!* 👇'],
     {capture: true},
@@ -22,31 +24,11 @@ const flowPromo = addKeyword(['Quiero una promo 🤩']).
         userNumber = ctx.body
         console.log(userNumber)
         return // flowDynamic(`Unos pasos mas! 😎`)
-    }).addAnswer('Elige tu *promo*! 👇', null, async (ctx, { provider }) => {
-        const id = ctx.key.remoteJid
-    
-    
-        const templateButtons = [
-            {index: 1, urlButton: {displayText: ':star: Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
-            {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
-            {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
-        ]
-        
-        const templateMessage = {
-            text: "Hi it's a template message",
-            footer: 'Hello World',
-            templateButtons: templateButtons
-        }
-        
-        
-        const abc = await provider.getInstance()
-        
-        
-        await abc.sendMessage(id, templateMessage)
-        console.log('->', abc)
-        return 
-    })
-
+    }).addAnswer('Elige tu *promo*! 👇', null, null).
+    addAnswer(['Una hamburguesa gratis!', '_Mensaje mensaje mensaje mensaje_'], [{media:'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'},{buttons: [{body: 'Canjear'}]}], null, [flowCanjear]).
+    addAnswer(['Un desayuno gratis!', '_Mensaje mensaje mensaje mensaje_'], [{media:'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'},{buttons: [{body: 'Canjear'}]}], null, [flowCanjear]).
+    addAnswer(['Una hamburguesa gratis!', '_Mensaje mensaje mensaje mensaje_'], [{media:'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'},{buttons: [{body: 'Canjear'}]}], null, [flowCanjear]).
+    addAnswer(['Un desayuno gratis!', '_Mensaje mensaje mensaje mensaje_'], [{media:'https://www.comedera.com/wp-content/uploads/2022/12/Desayono-americano-shutterstock_2120331371.jpg'},{buttons: [{body: 'Canjear'}]}], null, [flowCanjear])
 
 const flowBurgers = addKeyword('Ver menu burgers 🍔').addAnswer('Te paso nuestro menu de Burgers 👇', {media: 'https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/FJKXKQKMMJBV7KQ7XQ3YNFO7LU.jpg'}, null)
 
